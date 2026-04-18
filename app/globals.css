@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+/*Basic css setup */
+
+/*colors*/
+@theme {
+  --color-primary: #8f56cc;
+  --color-secondary: #5d4ec4;
+  --color-base: #e6ebf4;
+  --color-content: #22232c;
+  --color-content-alter: #717586;
+  --color-outer: #d1d5e0;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth scroll-pt-24;
+  }
+  body {
+    @apply bg-base text-content;
+  }
+}
