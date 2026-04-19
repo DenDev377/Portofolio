@@ -1,7 +1,7 @@
 import { PiChatDotsBold } from "react-icons/pi";
 import { MdMenu } from "react-icons/md";
 import { RiCloseLine } from "react-icons/ri";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navLinks = [
@@ -14,6 +14,19 @@ export default function Navbar() {
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    // focus close button when menu opens
+    closeButtonRef.current?.focus();
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [isMenuOpen]);
   return (
     <header className="fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out">
       <nav className="flex items-center justify-between max-w-6xl mx-auto w-[90%] py-4">
@@ -35,7 +48,7 @@ export default function Navbar() {
         </div>
         {/* Desktop tombol ayo berbicara */}
         <a
-          href="#"
+          href="#contact"
           className="hidden min-[825px]:flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full hover:bg-primary/90 transition-all duration-300 ease-in-out"
         >
           Ayo Berbicara <PiChatDotsBold className="text-lg " />
@@ -56,14 +69,31 @@ export default function Navbar() {
           )}
         </button>
       </nav>
-      {/* Mobile menu (hidden by default) */}
+      {/* Off-canvas drawer (mobile) */}
       {isMenuOpen && (
-        <div
-          id="mobile-menu"
-          className="min-[825px]:hidden fixed w-full top-20 z-40"
-        >
-          <div className="bg-white shadow-lg rounded-2xl mx-4 mt-2 p-6">
-            <div className="flex flex-col items-start gap-4">
+        <div className="min-[825px]:hidden fixed inset-0 z-40">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            onClick={() => setIsMenuOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Drawer */}
+          <aside className="absolute right-0 top-0 h-full w-3/4 sm:w-96 bg-white p-6 shadow-xl transform transition-transform duration-300">
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-lg font-bold">Menu</span>
+              <button
+                ref={closeButtonRef}
+                onClick={() => setIsMenuOpen(false)}
+                className="p-2 rounded-md text-gray-700 hover:text-gray-900"
+                aria-label="Tutup menu"
+              >
+                <RiCloseLine className="text-2xl" />
+              </button>
+            </div>
+
+            <nav className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -74,16 +104,16 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
-              {/* Tombol ayo berbicara untuk mobile */}
+
               <a
                 href="#contact"
-                className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full hover:bg-primary/90 transition-all duration-300 ease-in-out"
+                className="mt-2 inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full hover:bg-primary/90 transition-all duration-300 ease-in-out"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Ayo Berbicara <PiChatDotsBold className="text-lg" />
               </a>
-            </div>
-          </div>
+            </nav>
+          </aside>
         </div>
       )}
     </header>
