@@ -20,3 +20,25 @@
     @apply bg-base text-content;
   }
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@layer utilities {
+  /* Utility to use marquee keyframes with Tailwind-friendly class */
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+
+  /* Smooth touch scrolling helper for iOS */
+  .touch-pan-x {
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+  }
+}
