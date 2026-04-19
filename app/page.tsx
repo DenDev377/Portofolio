@@ -1,6 +1,7 @@
 "use client";
 import Navbar from "./component/Navbar";
 import Hero from "./component/Hero";
+import Portofolio from "./component/Portofolio";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       ></div>
       <Navbar />
       <Hero />
+      <Portofolio />
     </div>
   );
 }
