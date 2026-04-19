@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { HiOutlineViewGrid, HiDownload } from "react-icons/hi";
 
 export default function Hero() {
   const icons = [
@@ -48,6 +49,23 @@ export default function Hero() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/*Tombol*/}
+        <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
+          <a
+            href="#portofolio"
+            className="bg-primary w-full md:w-auto py-3 px-8 text-white rounded-full font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity duration-300"
+          >
+            Pekerjaan Saya <HiOutlineViewGrid className="text-lg" />
+          </a>
+          <a
+            href="/assets/resume.pdf"
+            download
+            className="bg-black w-full md:w-auto py-3 px-8 text-white rounded-full font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity duration-300"
+          >
+            Resume Saya <HiDownload className="text-lg" />
+          </a>
         </div>
       </div>
     </section>
