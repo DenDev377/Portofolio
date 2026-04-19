@@ -6,7 +6,7 @@ export default function About() {
     <section className="mt-12 pb-8" id="about">
       {/*Heading*/}
       <div className="text-center">
-        <p className="text-content font-semibold inline-flex items-center gap-1 border border-outer py-1.5 px-3 rounded-2xl mb-4">
+        <p className="text-content font-semibold inline-flex items-center gap-1 border border-olive-950 py-1.5 px-3 rounded-2xl mb-4">
           <PiStarFourFill className="text-lg" />
           Tentang
         </p>

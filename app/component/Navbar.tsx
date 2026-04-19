@@ -35,7 +35,7 @@ export default function Navbar() {
           Dendi <span className="text-primary text-3xl"></span>
         </a>
         {/* Navigation Links */}
-        <div className="hidden min-[825px]:flex items-center gap-4 bg-base shadow-lg opacity-80 px-8 py-3 rounded-b-full">
+        <div className="hidden min-[825px]:flex items-center gap-4 bg-white/10 backdrop-blur-sm shadow-lg opacity-80 px-8 py-3 rounded-b-full">
           {navLinks.map((link) => (
             <a
               key={link.name}
