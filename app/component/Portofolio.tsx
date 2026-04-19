@@ -51,8 +51,8 @@ export default function Portofolio() {
                 className="object-cover rounded-lg"
                 priority={false}
               />
-              {/* Gradient overlay + title */}
-              <div className="absolute left-0 right-0 bottom-0 p-4 bg-linear-to-t from-black/60 to-transparent">
+              {/* Glass overlay + title */}
+              <div className="absolute left-0 right-0 bottom-0 p-4 bg-white/10 backdrop-blur-sm border border-white/10">
                 <h3
                   id={`project-${project.id}-title`}
                   className="text-white text-lg font-semibold"
