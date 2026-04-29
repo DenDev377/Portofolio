@@ -3,6 +3,9 @@ import Navbar from "./component/Navbar";
 import Hero from "./component/Hero";
 import Portofolio from "./component/Portofolio";
 import About from "./component/About";
+import Resume from "./component/Resume";
+import Contact from "./component/Contact";
+import Footer from "./component/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +19,9 @@ export default function Home() {
       <Hero />
       <Portofolio />
       <About />
+      <Resume />
+      <Contact />
+      <Footer />
     </div>
   );
 }
